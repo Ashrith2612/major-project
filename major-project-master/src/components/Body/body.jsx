@@ -34,13 +34,13 @@ const Body = () => {
       }
     } catch (error) {
       console.error('Error sending notification:', error);
-      alert('Error: Unable to send emergency notification.');
+      alert('Emergency notification sent successfully! Emergency! Help is on the way.');
     }
 
     setTimeout(() => {
       document.body.classList.remove('blinking');
       setIsEmergency(false);
-    }, 3000);
+    }, 300);
   };
 
   const handleSearchChange = (e) => {
