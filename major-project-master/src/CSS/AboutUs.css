@@ -1,0 +1,144 @@
+/* About Us Page Specific Styles */
+.about-container {
+    margin: 80px auto; /* Adjusted for fixed header */
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.about-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+.about-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #f79;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.about-content h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #f79;
+    font-weight: 600;
+    border-bottom: 2px solid #f79;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.about-content p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #e0e0e0;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.about-content ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+    color: #e0e0e0;
+}
+
+.about-content ul li::before {
+    content: "✔";
+    color: #f79;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+}
+
+/* Footer Styles (Same as Global) */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+footer a {
+    color: #f79;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Scroll to Top Button Styles (Same as Global) */
+.scroll-top {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+}
+
+.scroll-top button {
+    background-color: #f79;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-top button:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+/* Add hover effect to links in the nav */
+.about-content a {
+    color: #f79;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.about-content a:hover {
+    color: #e67e22;
+    text-decoration: underline;
+}
+
+/* Add a subtle animation to text */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-content h2,
+.about-content h3,
+.about-content p,
+.about-content ul li {
+    animation: fadeIn 1.2s ease-in-out;
+}

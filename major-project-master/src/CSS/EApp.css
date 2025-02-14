@@ -1,0 +1,213 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(119, 0, 255), #f79);
+    color: white;
+    padding-top: 70px;
+    margin: 0;
+}
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 30px;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+/* Active Link Styling */
+nav ul li a.active {
+    text-decoration: underline;
+    color: #f79;
+}
+
+nav ul li a:hover {
+    color: #f79;
+}
+
+/* Body Container */
+.container {
+    margin: 40px auto;
+    max-width: 1200px;
+}
+/* Emergency Page Search Bar */
+.emergency-search-bar {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.emergency-search-bar input {
+    padding: 15px 25px;
+    width: 400px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    outline: none;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.emergency-search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.emergency-search-bar input:focus {
+    border: 2px solid #f79;
+    box-shadow: 0 0 20px rgba(247, 121, 255, 0.8);
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Optional: Add a subtle glow effect */
+.emergency-search-bar input:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .emergency-search-bar input {
+        width: 80%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .emergency-search-bar input {
+        width: 90%;
+        font-size: 14px;
+    }
+}
+
+/* Contacts Grid */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid white;
+}
+
+.contact-card p {
+    margin: 5px 0;
+    color: white;
+    font-size: 16px;
+}
+
+.contact-card .contact-btn {
+    background-color: rgb(8, 138, 25);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-card .contact-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #f79;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+

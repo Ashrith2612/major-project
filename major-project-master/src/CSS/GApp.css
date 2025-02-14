@@ -1,0 +1,152 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(119, 0, 255), #f79);
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content and give padding */
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Heading Style */
+h1 {
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Navigation Styles */
+header nav ul li a.active {
+    color: #fff; /* Text color for active link */
+    background-color: #4CAF50; /* Background color for active link */
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Gender Detection Box Styles */
+.gender-detection-div {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gender-detection-div:hover {
+    background-color: #45a049;
+}
+
+/* Container for the counters */
+#gender-detection-counter {
+    display: flex;
+    justify-content: center; /* Centers the counters horizontally */
+    gap: 50px; /* Adds space between the counters */
+    margin-top: 40px;
+}
+
+/* Styling for each counter */
+.counter {
+    text-align: center;
+}
+
+.counter p {
+    font-size: 80px;
+    color: #020202;
+}
+
+/* Count numbers larger and bolder */
+.count-number {
+    font-size: 100px; /* Increased font size */
+    color: #333;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 1s ease-in-out;
+}
+
+/* Button Styling */
+.button-container {
+    margin-top: 40px;
+}
+
+#redirect-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#redirect-button:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+/* Scroll to top button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.scroll-top button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Make sure the page content doesn't overlap with fixed elements */
+body {
+    padding-bottom: 500px; /* Space for the scroll button */
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
