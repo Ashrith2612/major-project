@@ -3,76 +3,103 @@ import "../../CSS/LApp.css";
 
 const LocationMap = () => {
   useEffect(() => {
-    // Load the Google Maps API script dynamically
-    const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAI5S07zzkMvVeE2DF790_hzdI9yAuEJYU&callback=initMap";
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      window.initMap = initMap;
+    const loadGoogleMaps = () => {
+      if (!window.google) {
+        const script = document.createElement("script");
+        script.src =
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyAI5S07zzkMvVeE2DF790_hzdI9yAuEJYU&callback=initMap";
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+        window.initMap = initMap;
+      } else {
+        initMap();
+      }
     };
 
-    // Cleanup on component unmount
+    loadGoogleMaps();
+
     return () => {
-      document.head.removeChild(script);
+      if (window.google && window.initMap) {
+        delete window.initMap;
+      }
     };
   }, []);
 
-  // Initialize the map and set the location logic
   const initMap = () => {
-    let randomLatitude = 28.7041 + (Math.random() - 0.5) * 0.1;  // Random latitude near Delhi
-    let randomLongitude = 77.1025 + (Math.random() - 0.5) * 0.1;  // Random longitude near Delhi
+    const iiitBasarLocation = { lat: 18.8819968, lng: 77.9208459 };
+    const iiitBasarAddress = "IIIT Basar, Nirmal District, Telangana, India – 504107";
 
-    const location = { lat: randomLatitude, lng: randomLongitude };
+    const createMapAndMarker = (lat, lng, title) => {
+      const location = { lat, lng };
+      const map = new window.google.maps.Map(document.getElementById("map"), {
+        zoom: 16,
+        center: location,
+      });
+      new window.google.maps.Marker({
+        position: location,
+        map: map,
+        title,
+      });
+      updateLocationDetails(lat, lng, iiitBasarAddress);
+    };
 
-    const map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
-      center: location,
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          createMapAndMarker(latitude, longitude, "Your Current Location");
 
-    const marker = new window.google.maps.Marker({
-      position: location,
-      map: map,
-      title: "Random Location",
-    });
+          setInterval(() => {
+            navigator.geolocation.getCurrentPosition((newPos) => {
+              const { latitude: newLat, longitude: newLng } = newPos.coords;
+              createMapAndMarker(newLat, newLng, "Updated Location");
+            });
+          }, 10000);
+        },
+        (error) => {
+          console.warn("Geolocation error:", error.message);
+          alert("Location access denied. Showing IIIT Basar by default.");
+          createMapAndMarker(iiitBasarLocation.lat, iiitBasarLocation.lng, "IIIT Basar");
+        }
+      );
+    } else {
+      alert("Geolocation not supported. Showing IIIT Basar.");
+      createMapAndMarker(iiitBasarLocation.lat, iiitBasarLocation.lng, "IIIT Basar");
+    }
+  };
 
-    // Set the details for Latitude, Longitude, and Time
-    document.getElementById("latitude").textContent = randomLatitude.toFixed(4);
-    document.getElementById("longitude").textContent = randomLongitude.toFixed(4);
+  const updateLocationDetails = (lat, lng, fallbackAddress) => {
+    document.getElementById("latitude").textContent = lat.toFixed(6);
+    document.getElementById("longitude").textContent = lng.toFixed(6);
     document.getElementById("time").textContent = new Date().toLocaleString();
 
-    // Updating location every 10 seconds with new random location for demo purpose
-    setInterval(() => {
-      randomLatitude = 28.7041 + (Math.random() - 0.5) * 0.1;
-      randomLongitude = 77.1025 + (Math.random() - 0.5) * 0.1;
-
-      const newLocation = { lat: randomLatitude, lng: randomLongitude };
-
-      marker.setPosition(newLocation);
-      map.setCenter(newLocation);
-
-      // Update details with new values
-      document.getElementById("latitude").textContent = randomLatitude.toFixed(4);
-      document.getElementById("longitude").textContent = randomLongitude.toFixed(4);
-      document.getElementById("time").textContent = new Date().toLocaleString();
-    }, 10000); // Update every 10 seconds
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyAI5S07zzkMvVeE2DF790_hzdI9yAuEJYU`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.results && data.results[0]) {
+          document.getElementById("locationName").textContent =
+            data.results[0].formatted_address;
+        } else {
+          document.getElementById("locationName").textContent = fallbackAddress;
+        }
+      })
+      .catch((err) => {
+        console.error("Geocoding error:", err);
+        document.getElementById("locationName").textContent = fallbackAddress;
+      });
   };
 
   return (
     <div className="location-container">
       <h2 className="location-title">Real-Time Location</h2>
-
-      {/* Google Map Container */}
       <div id="map" className="map-container"></div>
-
-      {/* Location Details */}
       <div className="location-details">
         <h2>Location Details</h2>
         <p>Latitude: <span id="latitude"></span></p>
         <p>Longitude: <span id="longitude"></span></p>
         <p>Time: <span id="time"></span></p>
+        <p>Location Name: <span id="locationName"></span></p>
       </div>
     </div>
   );
