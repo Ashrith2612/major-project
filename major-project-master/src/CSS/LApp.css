@@ -1,73 +1,137 @@
-/* Add Google Map container styles */
-#map {
-    height: 400px;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow to the map */
-}
-
-/* Location details section */
-.location-details {
-    margin-top: 20px;
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background for contrast */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease-in-out; /* Smooth background transition */
-}
-
-.location-details:hover {
-    background-color: rgba(0, 0, 0, 0.8);  /* Darker background on hover */
-}
-
-/* Location details heading */
-.location-details h2 {
-    font-size: 28px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font for heading */
-    margin-bottom: 10px;
-    color: #f4a261; /* Warm accent color for the heading */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
-}
-
-/* Paragraph text inside location details */
-.location-details p {
-    font-size: 18px;
-    font-family: 'Arial', sans-serif;
-    margin: 10px 0;
-    color: #ffffff;
-    line-height: 1.6;  /* Increased line height for readability */
-    transition: color 0.3s ease-in-out; /* Smooth text color transition */
-}
-
-.location-details p span {
-    color: #f4a261; /* Accent color for span (Latitude, Longitude, Time) */
+/* Global Container for the Page */
+.location-container {
+    max-width: 1200px; /* Max width for large screens */
+    width: 100%; /* Responsive width */
+    margin: 0 auto; /* Center the content */
+    padding: 50px 0;
+  }
+  
+  /* Title Centering */
+  .location-title {
+    text-align: center; /* Center the title horizontally */
+    margin-top: 20px; /* Space above the title */
+    font-size: 2rem; /* Increase font size for better visibility */
     font-weight: bold;
-}
-
-/* Smooth hover effect on paragraphs */
-.location-details p:hover {
-    color: #f4a261; /* Change text color on hover */
-}
-
-/* Scroll to Top Button */
-.scroll-top button {
-    background-color: #f4a261;
-    color: white;
+    color: #ffb347; /* Accent color */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* Shadow for the title */
+    margin-bottom: 20px; /* Space below the title */
+  }
+  
+  /* Google Map Container */
+  #map {
+    height: 500px; /* Increased height for better visibility */
+    width: 100%; /* Full width within its container */
+    border-radius: 16px; /* Smooth corners */
+    margin-top: 30px; /* Space between map and title */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Soft shadow around map */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #map:hover {
+    transform: scale(1.01); /* Slight zoom effect on hover */
+  }
+  
+  /* Location Details Card */
+  .location-details {
+    width: 100%; /* Full width within its container */
+    margin-top: 30px; /* Space between map and details */
+    padding: 30px 40px; /* Increased padding for a spacious feel */
+    text-align: center; /* Center the text */
+    color: #ffffff; /* White text color */
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark background */
+    border-radius: 16px; /* Smooth corners */
+    backdrop-filter: blur(10px); /* Blurred background effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .location-details:hover {
+    background: rgba(0, 0, 0, 0.6); /* Darker background on hover */
+  }
+  
+  /* Location Heading */
+  .location-details h2 {
+    font-size: 30px; /* Larger heading */
+    margin-bottom: 15px; /* Space below the heading */
+    font-weight: 600; /* Bold font */
+    color: #ffb347; /* Warm accent color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+  }
+  
+  /* Paragraph Text in Location Details */
+  .location-details p {
+    font-size: 18px; /* Font size for readability */
+    margin: 10px 0; /* Vertical space between paragraphs */
+    font-family: 'Arial', sans-serif; /* Sans-serif font */
+    line-height: 1.7; /* Increased line height for clarity */
+    color: #e0e0e0; /* Light grey color */
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+  }
+  
+  .location-details p span {
+    color: #ffb347; /* Highlighted accent color for coordinates */
+    font-weight: bold; /* Bold for emphasis */
+  }
+  
+  .location-details p:hover {
+    color: #ffd8a9; /* Change color on hover */
+  }
+  
+  /* Scroll to Top Button */
+  .scroll-top button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(to right, #ff9966, #ff5e62); /* Gradient background */
+    color: #fff; /* White text */
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 50%;
+    padding: 14px 18px;
+    font-size: 20px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    border-radius: 50%; /* Circular button */
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.scroll-top button:hover {
-    background-color: #e76f51;  /* Change to a darker shade on hover */
-}
-
-.scroll-top button:focus {
-    outline: none;
-}
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    z-index: 1000;
+    display: none; /* Hidden by default */
+  }
+  
+  .scroll-top button:hover {
+    background: linear-gradient(to right, #e96443, #904e95); /* Darker gradient on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+  }
+  
+  .scroll-top button:focus {
+    outline: none; /* Remove outline when focused */
+  }
+  
+  /* Mobile Responsiveness */
+  @media screen and (max-width: 768px) {
+    .location-container {
+      width: 100%; /* Slightly smaller container for smaller screens */
+      padding: 10px 0; /* Less padding */
+    }
+  
+    #map {
+      height: 350px; /* Adjust map height for smaller screens */
+    }
+  
+    .location-details {
+      padding: 20px 25px; /* Adjust padding for smaller screens */
+    }
+  
+    .location-details h2 {
+      font-size: 24px; /* Smaller heading size */
+    }
+  
+    .location-details p {
+      font-size: 16px; /* Smaller font size for better readability */
+    }
+  
+    .scroll-top button {
+      padding: 10px 14px; /* Smaller button on mobile */
+      font-size: 18px; /* Smaller font size */
+    }
+  }
+  
