@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const EmergencyAlert = () => {
   const [isShaking, setIsShaking] = useState(false);
-  const [shakeThreshold, setShakeThreshold] = useState(15); // Adjust threshold for sensitivity
+  const [shakeThreshold, setShakeThreshold] = useState(25); // Adjust threshold for sensitivity
 
   // Function to trigger vibration
   const triggerVibration = () => {
     if (navigator.vibrate) {
-      navigator.vibrate([500, 200, 500]); // Pattern: Vibrate -> Pause -> Vibrate
+      navigator.vibrate([800, 200, 800]); // Pattern: Vibrate -> Pause -> Vibrate
       console.log("Vibration triggered.");
     } else {
       console.error("Vibration not supported on this device or browser.");
